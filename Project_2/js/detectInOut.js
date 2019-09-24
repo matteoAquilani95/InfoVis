@@ -2,7 +2,7 @@
  * applies to this demo as well so it doesn't have to be repeated. */
 
 
-var stodentro = false;
+var heroIN = false;
 
 // enable draggables to be dropped into this
 interact('.dropzone').dropzone({
@@ -20,21 +20,21 @@ interact('.dropzone').dropzone({
       div.transition().duration(100).style("opacity", 0);
     },
     ondragenter: function (event) {
-      stodentro = true;
+      heroIN = true;
     },
     ondragleave: function (event) {
-      stodentro = false;
+      heroIN = false;
     },
     ondrop: function (event) {
       //console.log("only drop " + event.target.id)
       d3.select(event.relatedTarget).style("stroke-width", null);
       checkCharacterMovie2(event.target.id);
-      stodentro=false;
+      heroIN=false;
     },
     ondropdeactivate: function (event) {
       // remove active dropzone feedback
       d3.select(event.relatedTarget).style("stroke-width", null);
-      if(!stodentro){
+      if(!heroIN){
         d3.select("#"+event.relatedTarget.id).raise().transition().ease(d3.easeElastic).duration(1500)
             .attr("cx", sectionHeroXY[0]).attr("cy", sectionHeroXY[1])
       }

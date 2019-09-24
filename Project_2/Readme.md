@@ -4,6 +4,11 @@ It works only in Mozilla Firefox and not in other browsers (Chrome, Safari, Edge
 If the data are not correctly loaded, follow the procedure below:
 	about:config -> privacy.file_unique_origin -> set the variable to False
 
+# Start Project
+To start the project, it’s necessary open the Main.html file in the browser.
+
+NB: the project was implemented on a 2560x1600 screen, so it’s likely that on screens with lower resolution a correct display will not be obtained. In this case we recommend reducing the page zoom to 90%.
+
 # User Guide
 The goal of this pleasant game is to insert the heroes of the Marvel Cinematic Universe into each of the numerous films in which it has appeared.
 
@@ -16,3 +21,5 @@ Clicking on one of these heroes, it will be displayed in a red box on the right 
 If the character is inserted in all the films, he can no longer be selected for further movement.
 
 In case of doubt it’s possible to reveal a character from one of the films, but at the cost of several points from those accumulated during the game. However, we hope that none of our players will use this feature!
+
+Designed by Matteo Aquilani & Daniele Mainella
