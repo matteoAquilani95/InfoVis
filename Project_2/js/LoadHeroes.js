@@ -330,9 +330,11 @@ function buildHeroFinder(svg,ellipse,x,y,heroID){
 }
 
 function revealHero(heroR, heroID, movieID) {
-    //console.log(d3.select(heroR).style("fill"))
-    if(confirm("Vuoi davvero sapere chi è? (costa 200 punti)")){
-        cheatHero(movieID, heroID);
-        d3.select(heroR).attr("class","appostHero").style("fill", img_url(heroID))
-    }
+    //console.log(d3.select(heroR).attr("class") != "revealHero")
+    if(d3.select(heroR).attr("class") != "revealHero"){
+	    if(confirm("Vuoi davvero sapere chi è? (costa 200 punti)")){
+	        cheatHero(movieID, heroID);
+	        d3.select(heroR).attr("class","revealHero").style("fill", img_url(heroID))
+	    }
+	}
 }
