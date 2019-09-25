@@ -90,15 +90,11 @@ function checkCharacterMovie2(idMovie){
 function actionHeroCorrect(idMovie){
     console.log("personaggio nel film giusto!")
         
-        // d3.select("#selectHero"+hero).transition().ease(d3.easeLinear)
-        //     .attr("cx", sectionHeroXY[0])
-        //     .attr("cy", sectionHeroXY[1])
-        //     .duration(1500)
         d3.select("#selectHero"+hero)
             .attr("cx", sectionHeroXY[0])
             .attr("cy", sectionHeroXY[1])
 
-        d3.select("#"+hero+"_"+idMovie).attr("class","appostHero").style("fill",img_url(hero))
+        d3.select("#"+hero+"_"+idMovie).attr("class","revealHero").style("fill",img_url(hero))
         
         correctHero(idMovie, hero);
 }
