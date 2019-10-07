@@ -1,4 +1,3 @@
-
 var dictMovies = [];
 var dictEdge = {};
 var missHeroes_Movie = {};
@@ -9,7 +8,7 @@ xhttp.onreadystatechange = function() {
         myFunction(this);
     }
 };
-xhttp.open("GET", "./Marvel - GraphML.xml", true);
+xhttp.open("GET", "media/Marvel - GraphML.xml", true);
 xhttp.send();
 
 function myFunction(xml) {
@@ -19,7 +18,7 @@ function myFunction(xml) {
     var Elements = Root.children[2];
     var i;
     var yDist = 60;
-    
+
     // inizializzo dizionario personaggi
     for (i = 0; i < Elements.children.length; i++){
         var Elem = Elements.children[i];
@@ -31,7 +30,7 @@ function myFunction(xml) {
         dictHeroes.push({ "ID":Elem.id, "Name":Name[1].textContent.toString(), "y":yDist});
 
         yDist = yDist + 90;
-        
+
     };
 
     // caricamento link character-movie
@@ -58,12 +57,12 @@ function myFunction(xml) {
             dictMovies.push({ "ID":Elem.id, "Name":Name[1].textContent.toString(), "Heroes":Heroes});
             //target.append('h3').attr('id', Elem.id).text(Name[1].textContent.toString());
         }
-        
+
     };
 
-    console.log("Caricamento dati, finito!");
+    console.log("Data load, ended!");
 
-   
+
     // =================   Creazione dei personaggi nella herolist ===========================
     var defs = d3.select("#heroList").append("defs").attr("id","1");
     var defs2 = d3.select("#heroList").append("defs").attr("id","2");
@@ -83,9 +82,9 @@ function myFunction(xml) {
     		.attr("width", (radius*2)+4)
             .attr("height", (radius*2)+4)
             .attr("xlink:href", function(d) {
-                    return "./media/"+d.Name+".jpg";
+                    return "media/"+d.Name+".jpg";
             })
-    
+
     defs2.selectAll("pattern").data(dictHeroes)
             .enter()
             .append("pattern")
@@ -99,7 +98,7 @@ function myFunction(xml) {
                 .attr("width", (radius*2)+4)
                 .attr("height", (radius*2)+4)
                 .attr("xlink:href", function(d) {
-                        return "./media/"+d.Name+"-bw.jpg";
+                        return "media/"+d.Name+"-bw.jpg";
                 })
 
     d3.select("#heroList").append("g").selectAll("circle")
@@ -114,9 +113,9 @@ function myFunction(xml) {
         //.style("fill", "yellow")
         .style("fill", function(d) { return img_url(d.ID) } )
         .on("mouseover", function(d) {
-            div.transition().duration(200).style("opacity", .9);		
+            div.transition().duration(200).style("opacity", .9);
             div.html("<strong>"+ d.Name + "</strong><br> Movies Left: " + calculateMovieLeftHero(d.ID,dictEdge[d.ID].length,hero_movie_left[d.ID]))
-                .style("left", (d3.event.pageX) + "px")		
+                .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY - 40) + "px");
         })
         .on("mouseout", function() {
@@ -128,9 +127,9 @@ function myFunction(xml) {
                 rect.remove()
             }
             if(calculateMovieLeftHero(d.ID,dictEdge[d.ID].length,hero_movie_left[d.ID]) == 0){
-                alert("Hai finito di inserire il personaggio!")
+                alert("Hero in all films!")
             }else{
-                console.log("Hai selezionato: " + d.Name)
+                console.log("You selected: " + d.Name)
                 d3.select("#world").append("circle")
                     .attr("id", "selectHero"+d.ID)
                     .attr("class", "drag-drop")
@@ -140,9 +139,9 @@ function myFunction(xml) {
                     //.style("fill", "orange")
                     .style("fill", img_url(d.ID))
                     .on("mouseover", function() {
-                        div.transition().duration(200).style("opacity", .9);		
+                        div.transition().duration(200).style("opacity", .9);
                         div.html("<strong>"+ d.Name + "</strong><br> Movies Left: " + calculateMovieLeftHero(d.ID,dictEdge[d.ID].length,hero_movie_left[d.ID]))
-                        .style("left", (d3.event.pageX) + "px")		
+                        .style("left", (d3.event.pageX) + "px")
                         .style("top", (d3.event.pageY - 40) + "px");
                     })
                     .on("mouseout", function() {
@@ -168,7 +167,7 @@ function myFunction(xml) {
     		.attr("width", (radius*2)+4)
             .attr("height", (radius*2)+4)
             .attr("xlink:href", function(d) {
-                    return "./media/unknown.png";
+                    return "media/unknown.png";
             })
 
         let cod = [40,150];
@@ -212,7 +211,7 @@ function takeDistanceMovieName(len, name){
         len = len + 15;
     if(name.substring(0,9) == "Guardians")
         len = len + 14;
-    
+
     return len;
 }
 
@@ -263,12 +262,12 @@ function calculateMovieLeftHero(heroID,movieTot, NumMovie){
     let result = movieTot;
     if(NumMovie != undefined)
         result =  movieTot - NumMovie.length;
-    
+
     if (result == 0){
         d3.select("#selectHero"+heroID).remove();
         d3.select("#"+heroID).attr("stroke",null).style("fill",img_urlBW(heroID));
     }
-    
+
     return result;
 }
 
@@ -300,7 +299,7 @@ function loadHeroFinder(svg, ellipse, heroes){
     let pos = dimMovie[heroes.length]["pos"];
     let righe = pos.length;
     let y = ((righe-1)*radius) + ((righe/2)*off) - 20;
-    
+
     pos.forEach(function(d,i){
         x = ((d-1)*radius) + ((d/2)*off);
         //creo il primo cerchio
@@ -330,9 +329,9 @@ function buildHeroFinder(svg,ellipse,x,y,heroID){
 }
 
 function revealHero(heroR, heroID, movieID) {
-    //console.log(d3.select(heroR).attr("class") != "revealHero")
+    //console.log(d3.select(heroR).style("fill"))
     if(d3.select(heroR).attr("class") != "revealHero"){
-	    if(confirm("Vuoi davvero sapere chi è? (costa 200 punti)")){
+	    if(confirm("Are you sure you wanna really know who is it? (It costs 200 points)")){
 	        cheatHero(movieID, heroID);
 	        d3.select(heroR).attr("class","revealHero").style("fill", img_url(heroID))
 	    }

@@ -47,12 +47,12 @@ function calculateMissingHero(){
     missingHero = d3.selectAll(".missHero")._groups[0].length;
     d3.select('.missingHero').text("Missing Heroes: " + missingHero);
 
-    /* final condition for terminate game */
-    if(missingHero == 0){
+    /* final condition to the end of the game */
+    if(missingHero==0)
       d3.select("#overlay").style("display",'block');
-      pause();
-    }
 }
+
+
 
 function updateHeroMovieLeft(heroID,movieID){
     if(hero_movie_left[heroID] == undefined)
@@ -63,7 +63,7 @@ function updateHeroMovieLeft(heroID,movieID){
 
 function updateMovieCompleted(movieID){
     missHeroes_Movie[movieID] = missHeroes_Movie[movieID] - 1;
-    
+
     let movieC = 0;
     Object.values(missHeroes_Movie).forEach(element => {
         //console.log(element)
@@ -73,7 +73,6 @@ function updateMovieCompleted(movieID){
     });
     d3.select('.movieCompleted').text("Movies Completed: " + movieC + " / 24")
 }
-
 
 // ========= widget status game ============
 function radialProgress(selector) {

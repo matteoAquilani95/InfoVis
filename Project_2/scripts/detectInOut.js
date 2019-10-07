@@ -2,39 +2,41 @@
  * applies to this demo as well so it doesn't have to be repeated. */
 
 
-var heroIN = false;
+var inFilm = false;
 
 // enable draggables to be dropped into this
 interact('.dropzone').dropzone({
     // Require a 75% element overlap for a drop to be possible
     overlap: 0.5,
-  
-    // listen for drop related events: 
+
+    // listen for drop related events:
     ondropactivate: function (event) {
       // add active dropzone feedback
       d3.select(event.relatedTarget).style("stroke-width","4px");
       hero = event.relatedTarget.id;
       hero = "h"+hero.split("h")[1];
       //console.log("drop activate " + hero)
-      
+
       div.transition().duration(100).style("opacity", 0);
     },
     ondragenter: function (event) {
-      heroIN = true;
+      inFilm = true;
+      var dropzoneElement = event.target;
+      dropzoneElement.classList.add('drop-target');
     },
     ondragleave: function (event) {
-      heroIN = false;
+      inFilm = false;
     },
     ondrop: function (event) {
       //console.log("only drop " + event.target.id)
       d3.select(event.relatedTarget).style("stroke-width", null);
       checkCharacterMovie2(event.target.id);
-      heroIN=false;
+      inFilm=false;
     },
     ondropdeactivate: function (event) {
       // remove active dropzone feedback
       d3.select(event.relatedTarget).style("stroke-width", null);
-      if(!heroIN){
+      if(!inFilm){
         d3.select("#"+event.relatedTarget.id).raise().transition().ease(d3.easeElastic).duration(1500)
             .attr("cx", sectionHeroXY[0]).attr("cy", sectionHeroXY[1])
       }
@@ -42,7 +44,7 @@ interact('.dropzone').dropzone({
       //console.log("drop disattivato " + event.relatedTarget.id)
     }
   })
-  
+
   interact('.drag-drop')
     .draggable({
       inertia: true,

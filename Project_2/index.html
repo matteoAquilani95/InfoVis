@@ -1,0 +1,93 @@
+<html>
+    <meta charset="utf-8">
+    <title> Marvel - MCU </title>
+    <link rel="stylesheet", type="text/css", href="style/control.css"></style>
+    <link rel="stylesheet", type="text/css", href="style/progress-bar.css"></style>
+    <link rel="stylesheet", type="text/css", href="style/popup.css"></style>
+    <body>
+        <script src="http://d3js.org/d3.v4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+
+        <div class="heroes">
+            <h3>Heroes List</h3>
+        </div>
+
+        <div class="target">
+            <svg id="world" width="100%" height="595"></svg>
+        </div>
+        <div style="clear:both;"></div>
+
+        <div class="footer">
+
+            <table class="title">
+            <tr>
+                <td><div><strong>STATUS GAME</strong></div></td>
+            </tr>
+            </table>
+
+            <table>
+             <tr>
+                <td><div class='widget'></div></td>
+
+                <td class="menu2TD"><div class="menu2"></div></td>
+                <td class="scoreTD"><div class="menu1"></div></td>
+
+                <td class="time">
+                  <table class="time">
+                    <tr>
+                      <td>
+                        Time:
+                      </td>
+                      <td colspan="2">
+                        <input id="show_chrono" style="text-align:center; width:120;" value="00:00:00" disabled="disabled" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <button id="button_start" onclick="start();">start</button>
+                      </td>
+                      <td align="right">
+                        <button id="button_pause" onclick="pause();">pause</button>
+                      </td>
+                      <td align="right">
+                        <button id="button_reset" onclick="reset();">reset</button>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+
+                <td>
+                  <div class="playlist" style ="float:right;background-color:black">
+                    <audio id="audio" src="media/The Avengers - Main Theme Extended.mp3" controls autoplay></audio>
+                    <br>
+                    <button type="button" onclick = "play('media/The Avengers - Main Theme Extended.mp3')">
+                        Song 1
+                    </button>
+                    <button type="button" onclick = "play('media/THE AVENGERS_Epic Medley Orchestral Cover.mp3')">
+                        Song 2
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </table>
+
+          </div>
+
+          <div id="overlay">
+              <div class="popup">
+                  <h2>You insert all heroes!</h2>
+                  <div class="pl-left">
+                      <img src="http://giphygifs.s3.amazonaws.com/media/pAUg2l9WEV3QA/giphy.gif">
+                  </div>
+                  <button class="close" title="Chiudere" onclick="document.getElementById('overlay').style.display='none';"></button>
+              </div>
+          </div>
+
+        <script src="scripts/LoadHeroes.js"></script>
+        <script src="scripts/Universe.js"></script>
+        <script src="scripts/Score.js"></script>
+        <script src="scripts/detectInOut.js"></script>
+        <script src="scripts/chrono.js"></script>
+
+    </body>
+</html>

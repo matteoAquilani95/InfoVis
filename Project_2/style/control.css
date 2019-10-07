@@ -1,0 +1,173 @@
+div {
+  margin-left:5px;
+}
+
+body {
+  background-image: url("../media/milky-way-small2.jpg");
+  background-position: 4px;
+  width: 100%;
+}
+
+h1 {
+  color: red;
+  text-align: center;
+}
+
+h3 {
+  color: white;
+  text-align: center;
+}
+
+text {
+  fill: white;
+  font-size: 16px;
+}
+
+.score {
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+}
+
+.menu2 {
+  font-size: 18px;
+  color: white;
+}
+
+circle.drag-drop {
+  stroke: red;
+}
+
+
+rect {
+  fill: transparent;
+}
+
+rect.sectionHero {
+  fill:black;
+  stroke: red;
+  stroke-width: 3px;
+}
+
+ellipse {
+  fill: black;
+  stroke: red;
+}
+
+div.target {
+  border-style:solid;
+  border-width: 3px;
+  border-color: red;
+  float:left;
+  width:85%;
+  height:595px;
+}
+
+div.heroes {
+  border-style:solid;
+  border-width: 3px;
+  border-color: red;
+  overflow:auto;
+  padding-right:2px;
+  float:left;
+  width:10%;
+  height:595px;
+}
+
+div.footer {
+  margin-top: 7px;
+  width:96%;
+  height:130px;
+  background-color:transparent;
+  border-style:solid;
+  border-width: 3px;
+  border-color: red;
+}
+
+table {
+  width: 1200;
+  margin-left: 30;
+  margin-top: -5;
+}
+
+table.title{
+  width: 200;
+  margin-left: 35;
+  margin-top: 4;
+  color:white;
+}
+
+table.logo {
+  width: 900;
+  margin-left: 300;
+}
+
+td.scoreTD{
+  width: 300;
+}
+td.time{
+  width: 200;
+}
+
+div.time{
+  color:white;
+  font-size: 18px
+}
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 145px;
+    height: 35px;
+    padding: 2px;
+    font: 15px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+table.time{
+  width:auto;
+}
+
+.dropzone {
+ background-color: #ccc;
+ border: dashed 4px transparent;
+ border-radius: 4px;
+ margin: 10px auto 30px;
+ padding: 10px;
+ width: 80%;
+ transition: background-color 0.3s;
+}
+
+.drop-active {
+ border-color: #aaa;
+}
+
+.drop-target {
+ background-color: #29e;
+ border-color: #fff;
+ border-style: solid;
+}
+
+.drag-drop {
+ display: inline-block;
+ min-width: 40px;
+ padding: 2em 0.5em;
+
+ color: #fff;
+ background-color: #29e;
+ border: solid 2px #fff;
+
+ touch-action: none;
+ -webkit-transform: translate(0px, 0px);
+         transform: translate(0px, 0px);
+
+ transition: background-color 0.3s;
+}
+
+.drag-drop.can-drop {
+  color: #000;
+  background-color: #4e4;
+}

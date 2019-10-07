@@ -5,7 +5,7 @@ If the data are not correctly loaded, follow the procedure below:
 	about:config -> privacy.file_unique_origin -> set the variable to False
 
 # Start Project
-To start the project, it’s necessary open the Main.html file in the browser.
+To start the project, it’s necessary open the index.html file in the browser.
 
 NB: the project was implemented on a 2560x1600 screen, so it’s likely that on screens with lower resolution a correct display will not be obtained. In this case we recommend reducing the page zoom to 90%.
 
